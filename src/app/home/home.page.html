@@ -1,20 +1,124 @@
-<ion-header [translucent]="true">
-  <ion-toolbar>
-    <ion-title>
-      Blank
-    </ion-title>
-  </ion-toolbar>
+<ion-header>
+	<ion-toolbar color="primary">
+		<ion-buttons slot="start">
+			<ion-button (click)="logout()">
+				<ion-icon slot="icon-only" name="log-out"></ion-icon>
+			</ion-button>
+		</ion-buttons>
+		<ion-title> Home </ion-title>
+	</ion-toolbar>
 </ion-header>
 
 <ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">Blank</ion-title>
-    </ion-toolbar>
-  </ion-header>
+  <ion-list>
+    <ion-list-header>
+      <ion-label>Lista de Estudiantes </ion-label>
+    </ion-list-header>
 
-  <div id="container">
-    <strong>Ready to create an app?</strong>
-    <p>Start with Ionic <a target="_blank" rel="noopener noreferrer" href="https://ionicframework.com/docs/components">UI Components</a></p>
-  </div>
+    <ion-accordion-group>
+      <ion-accordion *ngFor="let estudiante of Notas" value={{estudiante.$key}}>
+        <ion-item slot="header" class="user-list">
+          <ion-label>
+            <h5>
+              <ion-icon name="person"></ion-icon> {{" "+estudiante.last_name+" "}} {{estudiante.name}}
+            </h5>
+          </ion-label>
+        </ion-item>
+        <div class="ion-padding" slot="content">
+          <ion-item-divider>
+            <ion-label><h3>Detalle de Calificaciones</h3> </ion-label>
+          </ion-item-divider>
+          <ion-item>
+            <ion-grid fixed class="item-note">
+              <ion-row>
+                <ion-col class="ion-text-center" style="border-right: 1px solid white;"><ion-label>Notas</ion-label> </ion-col>
+                <ion-col class="ion-text-center" style="border-right: 1px solid white;"><ion-label>Nota / 20</ion-label></ion-col>
+                <ion-col class="ion-text-center" style="border-right: 1px solid white"><ion-label>% </ion-label></ion-col>
+                <ion-col class="ion-text-center"><ion-label>Nota / 100 </ion-label></ion-col>
+              </ion-row>
+            </ion-grid>
+          </ion-item>
+          <ion-item class="item-note" >
+            <ion-grid fixed>
+              <ion-row class="ion-align-items-center">
+                <ion-col class="ion-text-center" style="border-right: 1px solid white;"><ion-label><h4>Nota 1</h4> </ion-label> <ion-text><sub>20%</sub></ion-text> </ion-col>
+                <ion-col class="ion-text-center" style="border-right: 1px solid white;"><ion-label><h4>{{estudiante.nota1 | number:'1.2-2'}}</h4></ion-label></ion-col>
+                <ion-col class="ion-text-center" style="border-right: 1px solid white;"><ion-label><h4>{{estudiante.nota1*0.2 | number:'1.2-2'}}</h4></ion-label></ion-col>
+                <ion-col class="ion-text-center"><ion-label><h4>{{estudiante.nota1*100/20*0.2 | number:'1.2-2'}}</h4></ion-label></ion-col>
+              </ion-row>
+            </ion-grid>
+          </ion-item>
+          <ion-item class="item-note" >
+            <ion-grid fixed>
+              <ion-row class="ion-align-items-center">
+                <ion-col class="ion-text-center" style="border-right: 1px solid white;"><ion-label><h4>Nota 2</h4> </ion-label> <ion-text><sub>20%</sub></ion-text> </ion-col>
+                <ion-col class="ion-text-center" style="border-right: 1px solid white;"><ion-label><h4>{{estudiante.nota2 | number:'1.2-2'}}</h4></ion-label></ion-col>
+                <ion-col class="ion-text-center" style="border-right: 1px solid white;"><ion-label><h4>{{estudiante.nota2*0.2 | number:'1.2-2'}}</h4></ion-label></ion-col>
+                <ion-col class="ion-text-center"><ion-label><h4>{{estudiante.nota2*100/20*0.2 | number:'1.2-2'}}</h4></ion-label></ion-col>
+              </ion-row>
+            </ion-grid>
+          </ion-item>
+          <ion-item class="item-note" >
+            <ion-grid fixed>
+              <ion-row class="ion-align-items-center">
+                <ion-col class="ion-text-center" style="border-right: 1px solid white;"><ion-label><h4>Nota 3</h4> </ion-label> <ion-text><sub>20%</sub></ion-text> </ion-col>
+                <ion-col class="ion-text-center" style="border-right: 1px solid white;"><ion-label><h4>{{estudiante.nota3 | number:'1.2-2'}}</h4></ion-label></ion-col>
+                <ion-col class="ion-text-center" style="border-right: 1px solid white;" ><ion-label><h4>{{estudiante.nota3*0.2 | number:'1.2-2'}}</h4></ion-label></ion-col>
+                <ion-col class="ion-text-center"><ion-label><h4>{{estudiante.nota3*100/20*0.2 | number:'1.2-2'}}</h4></ion-label></ion-col>
+              </ion-row>
+            </ion-grid>
+          </ion-item>
+          <ion-item class="item-note" >
+            <ion-grid fixed>
+              <ion-row class="ion-align-items-center">
+                <ion-col class="ion-text-center" style="border-right: 1px solid white;"><ion-label><h4>Nota 4</h4> </ion-label> <ion-text><sub>10%</sub></ion-text> </ion-col>
+                <ion-col class="ion-text-center" style="border-right: 1px solid white;"><ion-label><h4>{{estudiante.nota4 | number:'1.2-2'}}</h4></ion-label></ion-col>
+                <ion-col class="ion-text-center" style="border-right: 1px solid white;" ><ion-label><h4>{{estudiante.nota4*0.1 | number:'1.2-2'}}</h4></ion-label></ion-col>
+                <ion-col class="ion-text-center"><ion-label><h4>{{estudiante.nota4*100/20*0.1 | number:'1.2-2'}}</h4></ion-label></ion-col>
+              </ion-row>
+            </ion-grid>
+          </ion-item>
+          <ion-item class="item-note" >
+            <ion-grid fixed>
+              <ion-row class="ion-align-items-center">
+                <ion-col class="ion-text-center" style="border-right: 1px solid white;"><ion-label><h4>Nota 5</h4> </ion-label> <ion-text><sub>30%</sub></ion-text> </ion-col>
+                <ion-col class="ion-text-center" style="border-right: 1px solid white;"><ion-label><h4>{{estudiante.nota5 | number:'1.2-2'}}</h4></ion-label></ion-col>
+                <ion-col class="ion-text-center" style="border-right: 1px solid white;"><ion-label><h4>{{estudiante.nota4*0.3 | number:'1.2-2'}}</h4></ion-label></ion-col>
+                <ion-col class="ion-text-center"><ion-label><h4>{{estudiante.nota5*100/20*0.3 | number:'1.2-2'}}</h4></ion-label></ion-col>
+              </ion-row>
+            </ion-grid>
+          </ion-item>
+          <ion-item class="item-note" style="border-top: 1px solid white;" >
+            <ion-grid fixed>
+              <ion-row class="ion-align-items-center">
+                <ion-col class="ion-text-center" style="border-right: 1px solid white;"><ion-label>Total </ion-label> <ion-text><sub>100%</sub></ion-text> </ion-col>
+                <ion-col class="ion-text-center" style="border-right: 1px solid white;"><ion-label><h4>{{estudiante.total | number:'1.2-2'}}</h4></ion-label></ion-col>
+                <ion-col class="ion-text-center" style="border-right: 1px solid white;"></ion-col>
+                <ion-col class="ion-text-center"><ion-label><h4>{{estudiante.total*100/20 | number:'1.2-2'}}</h4></ion-label></ion-col>
+              </ion-row>
+            </ion-grid>
+          </ion-item>
+        
+            <div class="item-note" item-end >
+              <ion-grid fixed>
+                <ion-row class="ion-align-items-center">
+                  <ion-col class="ion-text-center">
+                    <ion-button fill="outline" [routerLink]="['/editar-registro/',estudiante.$key]">
+                      <ion-icon name="create">{{" "}}</ion-icon> Editar</ion-button>
+                  </ion-col>
+                  <ion-col class="ion-text-center">
+                    <ion-button fill="outline" (click)="deleteNota(estudiante.$key)">
+                      <ion-icon name="trash"></ion-icon> {{" "}}Eliminar</ion-button>
+                  </ion-col>
+                </ion-row>
+              </ion-grid>
+            </div>
+        </div>
+
+      </ion-accordion>
+    </ion-accordion-group>
+
+  </ion-list>
+   
 </ion-content>
+

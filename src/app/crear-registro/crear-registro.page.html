@@ -1,0 +1,60 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>Registro de Notas</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ion-list lines="full">
+    <form [formGroup]="notaForm" (ngSubmit)="formSubmit()">
+      <ion-item>
+        <ion-label position="floating">Nombre</ion-label>
+        <ion-input formControlName="name" type="text" minlength="3" maxlength="25" required></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label position="floating">Apellido</ion-label>
+        <ion-input formControlName="last_name" type="text" minlength="3"  maxlength="25" required>
+        </ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label position="floating">Nota 1</ion-label>
+        <ion-input formControlName="nota1" type="number" min="0" max="20" 
+        [(ngModel)]="valor1" (ionChange)="sumarValores()" required>
+        </ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label position="floating">Nota 2</ion-label>
+        <ion-input formControlName="nota2" type="number" min="0" max="20"
+        [(ngModel)]="valor2" (ionChange)="sumarValores()" required>
+        </ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label position="floating">Nota 3</ion-label>
+        <ion-input formControlName="nota3" type="number" min="0" max="20" 
+        [(ngModel)]="valor3" (ionChange)="sumarValores()" required>
+        </ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label position="floating">Nota 4</ion-label>
+        <ion-input formControlName="nota4" type="number" min="0" max="20" 
+          [(ngModel)]="valor4" (ionChange)="sumarValores()" required>
+        </ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label position="floating">Nota 5</ion-label>
+        <ion-input formControlName="nota5" type="number" min="0" max="20"
+          [(ngModel)]="valor5" (ionChange)="sumarValores()" required>
+        </ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label>Total:  </ion-label>
+        <ion-input [readonly]="true" [value]="resultado" ></ion-input>
+      </ion-item>
+      <ion-row>
+        <ion-col>
+          <ion-button type="submit" color="primary" shape="full" expand="block">Registrar</ion-button>
+        </ion-col>
+      </ion-row>
+    </form>
+  </ion-list>
+</ion-content>
